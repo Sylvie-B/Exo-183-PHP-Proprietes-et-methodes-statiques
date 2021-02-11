@@ -3,6 +3,11 @@
 
 class VOD
 {
+    private static int $aboClasse = 0;
+
+    private int $aboObject;
+    private float $price;
+    private string $name;
     private array $film = [
         "The fifth element",
         "Usual Suspects",
@@ -11,12 +16,27 @@ class VOD
         "John Wick"
     ];
 
-    private float $price;
-    private static int $abo;
-
     public function __construct(string $name){
-        $this->$name = $name;
+        $this->name = $name;
+        $this->aboObject = 0;
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
 
     /**
      * @return array|string[]
@@ -53,16 +73,21 @@ class VOD
     /**
      * @return int
      */
-    public static function getTotalAbo(): int
+    public function getObjectAbo(): int
     {
-        return self::$abo;
+        return $this->aboObject;
     }
 
     /**
      * @param int $abo
      */
-    public static function setTotalAbo(int $abo): void
+    public function addAbo(int $abo): void
     {
-        self::$abo++;
+        $this->aboObject += $abo;
+        self::$aboClasse += $abo;
+    }
+
+    public static function getClasseAbo() {
+        return self::$aboClasse;
     }
 }

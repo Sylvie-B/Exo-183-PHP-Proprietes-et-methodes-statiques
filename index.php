@@ -20,3 +20,13 @@
 
 require 'VOD.php';
 
+$netflix = new VOD('Netflix');
+$netflix->addAbo(10);
+
+$prime = new VOD('Prime');
+$prime->addAbo(5);
+
+// Test des résultats.
+echo "Abonnés netflix: " . $netflix->getObjectAbo() . "<br>";
+echo "Abonnés prime: " . $prime->getObjectAbo() . "<br>";
+echo "Total abonnements: " . VOD::getClasseAbo();
